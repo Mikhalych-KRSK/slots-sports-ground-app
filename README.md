@@ -28,25 +28,8 @@ cd slots-sports-ground-app
 ```bash
 cp .env.example .env
 ```
-### 3. Установи зависимости
-```bash
-composer install
-npm install && npm run build
+### 3. Настройка `.env`
 ```
-### 4. Запусти Docker
-```bash
-docker-compose up -d
-```
-- MySQL поднимется с базами `slots` и `slots_testing` (см. `init-databases.sql`)
-
-### 5. Сгенерируй ключ и мигрируй базу
-```bash
-docker exec -it slots-app php artisan key:generate
-docker exec -it slots-app php artisan migrate --seed
-```
-
-### Настройка `.env`
-```bash
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
@@ -54,6 +37,22 @@ DB_DATABASE=slots
 DB_USERNAME=slots
 DB_PASSWORD=secret
 DB_OPTIONS="--ssl-mode=DISABLED&allowPublicKeyRetrieval=true"
+```
+### 4. Установи зависимости
+```bash
+composer install
+npm install && npm run build
+```
+### 5. Запусти Docker
+```bash
+docker-compose up -d
+```
+- MySQL поднимется с базами `slots` и `slots_testing` (см. `init-databases.sql`)
+
+### 6. Сгенерируй ключ и мигрируй базу
+```bash
+docker exec -it slots-app php artisan key:generate
+docker exec -it slots-app php artisan migrate --seed
 ```
 
 ---
