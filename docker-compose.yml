@@ -29,6 +29,7 @@ services:
       - ./docker/mysql/init-databases.sql:/docker-entrypoint-initdb.d/init-databases.sql
     networks:
       - slots-network
+    command: --default-authentication-plugin=mysql_native_password
 
   nginx:
     image: nginx:latest
